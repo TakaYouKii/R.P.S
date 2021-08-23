@@ -2,6 +2,7 @@ package com.example.rps;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,7 +13,7 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
     TextView mySign, robotSign, whoWin;
-    Button paperBtn, scissorsBtn, rockBtn;
+    Button paperBtn, scissorsBtn, rockBtn, OpenSecondActivity ;
     static String paper = "Бумага";
     static String rock = "Камень";
     static String scissors = "Ножницы";
@@ -52,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
                             whoWin.setText("Робот победил");
                             robotwin++;
                             robotsScore.setText(String.valueOf(robotwin));
-
                             break;
                         case "Бумага":
                             whoWin.setText("Вы выйграли");
@@ -122,9 +122,22 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        OpenSecondActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
+
+
+
+
     private void initViews() {
+        OpenSecondActivity=findViewById(R.id.btn_second_activity);
         robotsScore=findViewById(R.id.txt_robots_score);
         yourScore=findViewById(R.id.txt_your_score);
         mySign = findViewById(R.id.user_sign_tv);
